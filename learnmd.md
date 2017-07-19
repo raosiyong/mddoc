@@ -1,4 +1,4 @@
-![Alt text](http://g.gravizo.com/g?
+![Alt text](https://g.gravizo.com/source/custom_mark13?
 @startuml;
 actor User;
 participant "First Class" as A;
