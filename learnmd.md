@@ -85,6 +85,10 @@ class ath_hw{
   ath_common;
   eeprom_ops *;
 }
+
+cfg80211_ops <|.. mac80211_config_ops ;
+mac80211_config_ops <|.. ieee80211_local ;
+
 @enduml
 r_ath9k_class
 </details>
