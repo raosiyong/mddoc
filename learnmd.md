@@ -6,11 +6,11 @@ r_ath9k_class
 
 @startuml;
 
-Class01 "1" *-- "many" Class02 : contains
+Class01 "1" *-- "many" Class02 : contains;
 
-Class03 o-- Class04 : aggregation
+Class03 o-- Class04 : aggregation;
 
-Class05 --> "1" Class06
+Class05 --> "1" Class06;
 
 'skinparam classAttributeIconSize 0
 skinparam backgroundColor #808080;
