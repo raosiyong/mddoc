@@ -4,7 +4,7 @@
 <summary></summary>
 r_ath9k_class
 
-@startuml
+@startuml;
 'skinparam classAttributeIconSize 0
 skinparam backgroundColor #808080;
 'skinparam classAttributeFontColor grey
@@ -52,39 +52,39 @@ class ieee80211_local {;
 };
 
 
-class net_device{
+class net_device{;
 
-}
-class ieee80211_hw{
+};
+class ieee80211_hw{;
   ieee80211_conf;
   struct wiphy *wiphy;
-}
-note top of ieee80211_hw:hardware information and state
-interface ath_ops{
+};
+note top of ieee80211_hw:hardware information and state;
+interface ath_ops{;
   unsigned int (*read)(void *, u32 reg_offset);
   void (*multi_read)(void *, u32 *addr, u32 *val, u16 count);
   void (*write)(void *, u32 val, u32 reg_offset);
   void (*enable_write_buffer)(void *);
   void (*write_flush) (void *);
   u32 (*rmw)(void *, u32 reg_offset, u32 set, u32 clr);
-}
-interface ath_bus_ops{
+};
+interface ath_bus_ops{;
   void (*read_cachesize)(struct ath_common *common, int *csz);
   bool (*eeprom_read)(struct ath_common *common, u32 off, u16 *data);
   void (*bt_coex_prep)(struct ath_common *common);
   void (*aspm_init)(struct ath_common *common);
-}
-class ath_common{
+};
+class ath_common{;
   const struct ath_ops *ops;
   const struct ath_bus_ops *bus_ops;
-}
-class ath_hw{
+};
+class ath_hw{;
   struct ath_ops reg_ops;
   device *;
   ieee80211_hw *;
   ath_common;
   eeprom_ops *;
-}
+};
 
 cfg80211_ops <|.. mac80211_config_ops ;
 mac80211_config_ops <|.. ieee80211_local ;
