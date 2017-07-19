@@ -70,10 +70,10 @@ destroy ahb;
 rao_ath9k
 </details>
 
-![Alt text](https://g.gravizo.com/source/svg/rao_ath9k_class?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
+![Alt text](https://g.gravizo.com/source/svg/r_ath9k_class?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
 <details> 
 <summary></summary>
-rao_ath9k_class
+r_ath9k_class
 
 @startuml
 
@@ -161,7 +161,7 @@ class ath_hw{
 
 
 @enduml
-rao_ath9k_class
+r_ath9k_class
 
 ### Linux wireless driver:ath9k
 
