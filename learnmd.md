@@ -69,6 +69,174 @@ destroy ahb;
 @enduml
 rao_ath9k
 </details>
+
+![Alt text](https://g.gravizo.com/source/svg/rao_ath9k_class?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
+<details> 
+<summary></summary>
+rao_ath9k_class
+
+@startuml
+
+'skinparam classAttributeIconSize 0
+skinparam backgroundColor #808080
+'skinparam classAttributeFontColor grey
+'skinparam stereotypeCBackgroundColor YellowGreen
+skinparam class {
+''  BackgroundColor lightgrey
+''  ArrowColor  lightgrey
+  AttributeFontColor grey
+''  AttributeFontStyle bold
+'Consolas,"Liberation Mono",Menlo,Courier,monospace
+'Helvetica,"Hiragino Sans GB","微软雅黑","Microsoft YaHei UI",SimSun,SimHei,arial,sans-serif'
+  AttributeFontName  monospace
+''  AttributeFontSize 13
+    FontStyle Bold
+    FontName "Nimbus Sans L"
+    FontSize  17
+  ''  FontColor grey
+    BackgroundColor lightGray    
+    BorderColor #f0f0f0
+    BorderThickness 1  
+
+}
+title <b>mac802.11</b> framework data struct global
+'skinparam monochrome true
+interface cfg80211_ops{
+
+}
+interface mac80211_config_ops{
+  wireless_dev *ieee80211_add_iface(struct wiphy *,char *name,nl80211_iftype type,*flags,					struct vif_params *);
+}
+class wiphy{
+  +name;
+  '..
+  +char priv[0];
+  '--
+  +register();
+struct wiphy *wiphy_new(const struct cfg80211_ops *ops, int sizeof_priv);
+}
+class ieee80211_sub_if_data{
+
+}
+'class ieee80211_local << (S,#FF7700) >>{
+class ieee80211_local {
+  'name;
+}
+cfg80211_ops <|.. mac80211_config_ops
+mac80211_config_ops <|.. ieee80211_local
+
+class net_device{
+
+}
+class ieee80211_hw{
+  ieee80211_conf;
+  struct wiphy *wiphy;
+}
+note top of ieee80211_hw:hardware information and state
+interface ath_ops{
+  unsigned int (*read)(void *, u32 reg_offset);
+  void (*multi_read)(void *, u32 *addr, u32 *val, u16 count);
+  void (*write)(void *, u32 val, u32 reg_offset);
+  void (*enable_write_buffer)(void *);
+  void (*write_flush) (void *);
+  u32 (*rmw)(void *, u32 reg_offset, u32 set, u32 clr);
+}
+interface ath_bus_ops{
+  void (*read_cachesize)(struct ath_common *common, int *csz);
+  bool (*eeprom_read)(struct ath_common *common, u32 off, u16 *data);
+  void (*bt_coex_prep)(struct ath_common *common);
+  void (*aspm_init)(struct ath_common *common);
+}
+class ath_common{
+  const struct ath_ops *ops;
+  const struct ath_bus_ops *bus_ops;
+}
+class ath_hw{
+  struct ath_ops reg_ops;
+  device *;
+  ieee80211_hw *;
+  ath_common;
+  eeprom_ops *;
+}
+ath_bus_ops <|.. ath_common
+ath_ops <|.. ath_common
+ath_common --o ath_hw
+
+class ath_softc{
+  struct ieee80211_hw *hw;
+	struct device *dev;
+  struct tasklet_struct intr_tq;
+  struct tasklet_struct bcon_tasklet;
+  struct ath_hw *sc_ah;
+  struct ieee80211_vif *tx99_vif;
+  struct sk_buff *tx99_skb;
+}
+enum 	nl80211_iftype<<nl80211.h>>{
+  NL80211_IFTYPE_UNSPECIFIED,
+	NL80211_IFTYPE_ADHOC,
+	NL80211_IFTYPE_STATION,
+	NL80211_IFTYPE_AP,
+	NL80211_IFTYPE_AP_VLAN,
+	NL80211_IFTYPE_WDS,
+	NL80211_IFTYPE_MONITOR,
+	NL80211_IFTYPE_MESH_POINT,
+	NL80211_IFTYPE_P2P_CLIENT,
+	NL80211_IFTYPE_P2P_GO,
+	NL80211_IFTYPE_P2P_DEVICE,
+	''/* keep last */
+	NUM_NL80211_IFTYPES,
+	NL80211_IFTYPE_MAX = NUM_NL80211_IFTYPES - 1
+}  
+interface ieee80211_ops<<net/mac80211.h>>{
+  void (*tx)(struct ieee80211_hw *hw, struct ieee80211_tx_control *control, struct sk_buff *skb);
+  int (*start)(struct ieee80211_hw *hw);
+  void (*stop)(struct ieee80211_hw *hw);
+  int (*add_interface)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
+  int (*change_interface)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,enum nl80211_iftype  new_type, bool p2p);  
+}
+interface ath9k_ops<<ath9k/main.c>>{
+  ath9k_tx
+  ath9k_start
+  ath9k_stop
+  ath9k_add_interface
+  ath9k_change_interface
+  ath9k_remove_interface
+  ath9k_config
+  ath9k_configure_filter
+  ath9k_sta_add
+  ath9k_sta_remove
+  ath9k_sta_notify
+  ath9k_conf_tx
+  ath9k_bss_info_changed
+  ath9k_set_key
+  ath9k_get_tsf
+  ath9k_set_tsf
+  ath9k_reset_tsf
+  ath9k_ampdu_action
+  ath9k_get_survey
+  ath9k_rfkill_poll_state
+  ath9k_set_coverage_class
+  ath9k_flush
+  ath9k_tx_frames_pending
+  ath9k_tx_last_beacon
+  ath9k_release_buffered_frames
+  ath9k_get_stats
+  ath9k_set_antenna
+  ath9k_get_antenna
+  ath9k_sw_scan_start
+  ath9k_sw_scan_complete
+}
+ieee80211_ops<|..ath9k_ops:operator abstract or callback function pointer >
+
+net_device <|.. ieee80211_hw
+ieee80211_local o-- ieee80211_hw
+ath_softc *-- ieee80211_hw
+wiphy <|-- ieee80211_local:Generalization >
+'Wiphy "1" *-- "Many" Class04:contains/Composition >
+
+@enduml
+rao_ath9k_class
+
 ### Linux wireless driver:ath9k
 
 Tags: 802.11 mac802
