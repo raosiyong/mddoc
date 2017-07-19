@@ -5,12 +5,9 @@
 ra_ath9k_class
 
 @startuml;
-
 body *-- 'many' foot:contains;
 foots o-- joe:aggregation;
 hand --> arm;
-
-
 @enduml
 ra_ath9k_class
 </details>
