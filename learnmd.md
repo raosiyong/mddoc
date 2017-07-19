@@ -6,9 +6,10 @@ ra_ath9k_class
 
 @startuml;
 
-Class01  *-- "many" Class02 : contains;
-Class03 o-- Class04 : aggregation;
-Class05 --> Class06;
+body *-- 'many' foot:contains;
+foots o-- joe:aggregation;
+hand --> arm;
+
 
 @enduml
 ra_ath9k_class
