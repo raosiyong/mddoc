@@ -4,68 +4,68 @@
 rao_ath9k
 @startuml
 
-skinparam roundcorner 20
-skinparam maxmessagesize 60
-'skinparam handwritten true
-skinparam backgroundColor #EEEBDC
-skinparam sequence {
-    ArrowThickness 1
-    ArrowFontColor gray
-    ArrowColor black
-    'ActorBorderColor DeepSkyBlue
-    LifeLineBorderColor blue
-    LifeLineBackgroundColor #A9DCDF
+skinparam roundcorner 20;
+skinparam maxmessagesize 60;
+'skinparam handwritten true;
+skinparam backgroundColor #EEEBDC;
+skinparam sequence {;
+    ArrowThickness 1;
+    ArrowFontColor gray;
+    ArrowColor black;
+    'ActorBorderColor DeepSkyBlue;
+    LifeLineBorderColor blue;
+    LifeLineBackgroundColor #A9DCDF;
     'Participant underline
-    ParticipantBorderColor lightGray
-    ParticipantBackgroundColor DodgerBlue
-    ParticipantFontName Impact
-    ParticipantFontSize 17
-    ParticipantFontColor #A9DCDF
-    ActorBackgroundColor aqua
-    ActorFontColor DeepSkyBlue
-    ActorFontSize 17
-    ActorFontName Aapex
+    ParticipantBorderColor lightGray;
+    ParticipantBackgroundColor DodgerBlue;
+    ParticipantFontName Impact;
+    ParticipantFontSize 17;
+    ParticipantFontColor #A9DCDF;
+    ActorBackgroundColor aqua;
+    ActorFontColor DeepSkyBlue;
+    ActorFontSize 17;
+    ActorFontName Aapex;
     'BoxBackgroundColor white
-    BoxBorderCOlor #EEEBDC
+    BoxBorderCOlor #EEEBDC;
 }
 ==init==
-box "ath9k"
-  Participant ahb
-  Participant ath9k_init
-  Participant ath9k_regd
-  Participant ath9k_xmit
+box "ath9k";
+  Participant ahb;
+  Participant ath9k_init;
+  Participant ath9k_regd;
+  Participant ath9k_xmit;
 
-endbox  
+endbox  ;
 '#white'
-box "kernel"
-  Participant platform
-  Participant platform_device
-  Participant device
-  Participant iqr  
-endbox  
+box "kernel";
+  Participant platform;
+  Participant platform_device;
+  Participant device;
+  Participant iqr  ;
+endbox  ;
 
 
-ath9k_init-->ahb:ath_ahb_init
-ahb-->platform:platform_driver_register
-platform-->ahb:ath_ahb_probe
-activate ahb
-ahb->platform_device: platform_get_resource
-ahb->device: devm_ioremap_nocache
-ahb->iqr:request_irq
-ahb->mac80211:ieee80211_alloc_hw
-mac80211-->wireless_core:wiphy_new
-ahb->ath9k_init:ath9k_init_device
-ath9k_init->ath9k_init:ath9k_init_softc
-ath9k_init->ath9k_init:ath9k_hw_common
-ath9k_init->ath9k_regd:ath_regd_init
-  note left:Initialize regulatory
-ath9k_init->ath9k_xmit:ath_tx_init
-ath9k_init<-ath9k_xmit:ath_descdma_setup
-  note right: dma description
-ath9k_init->ieee80211_hw:ieee80211_register_hw
-ath9k_init->ath9k_init:ath_init_leds
-ath9k_init->ath9k_init:ath_start_rfkill_poll
-destroy ahb
+ath9k_init-->ahb:ath_ahb_init;
+ahb-->platform:platform_driver_register;
+platform-->ahb:ath_ahb_probe;
+activate ahb;
+ahb->platform_device: platform_get_resource;
+ahb->device: devm_ioremap_nocache;
+ahb->iqr:request_irq;
+ahb->mac80211:ieee80211_alloc_hw;
+mac80211-->wireless_core:wiphy_new;
+ahb->ath9k_init:ath9k_init_device;
+ath9k_init->ath9k_init:ath9k_init_softc;
+ath9k_init->ath9k_init:ath9k_hw_common;
+ath9k_init->ath9k_regd:ath_regd_init;
+  note left:Initialize regulatory;
+ath9k_init->ath9k_xmit:ath_tx_init;
+ath9k_init<-ath9k_xmit:ath_descdma_setup;
+  note right: dma description;
+ath9k_init->ieee80211_hw:ieee80211_register_hw;
+ath9k_init->ath9k_init:ath_init_leds;
+ath9k_init->ath9k_init:ath_start_rfkill_poll;
+destroy ahb;
 @enduml
 rao_ath9k
 </details>
