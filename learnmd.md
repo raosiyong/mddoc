@@ -87,7 +87,7 @@ class ath_hw{
 }
 @enduml
 r_ath9k_class
-
+</details>
 
 ![ath9k](https://g.gravizo.com/source/svg/rao_ath9k?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
 <details> 
