@@ -78,52 +78,52 @@ rao_ath9k_class
 @startuml
 
 'skinparam classAttributeIconSize 0
-skinparam backgroundColor #808080
+skinparam backgroundColor #808080;
 'skinparam classAttributeFontColor grey
 'skinparam stereotypeCBackgroundColor YellowGreen
-skinparam class {
+skinparam class {;
 ''  BackgroundColor lightgrey
 ''  ArrowColor  lightgrey
-  AttributeFontColor grey
+  AttributeFontColor grey;
 ''  AttributeFontStyle bold
 'Consolas,"Liberation Mono",Menlo,Courier,monospace
 'Helvetica,"Hiragino Sans GB","微软雅黑","Microsoft YaHei UI",SimSun,SimHei,arial,sans-serif'
-  AttributeFontName  monospace
+  AttributeFontName  monospace;
 ''  AttributeFontSize 13
-    FontStyle Bold
-    FontName "Nimbus Sans L"
-    FontSize  17
+    FontStyle Bold;
+    FontName "Nimbus Sans L";
+    FontSize  17;
   ''  FontColor grey
-    BackgroundColor lightGray    
-    BorderColor #f0f0f0
-    BorderThickness 1  
+    BackgroundColor lightGray    ;
+    BorderColor #f0f0f0;
+    BorderThickness 1  ;
 
-}
-title <b>mac802.11</b> framework data struct global
+};
+title <b>mac802.11</b> framework data struct global;
 'skinparam monochrome true
-interface cfg80211_ops{
+interface cfg80211_ops{;
 
-}
-interface mac80211_config_ops{
+};
+interface mac80211_config_ops{;
   wireless_dev *ieee80211_add_iface(struct wiphy *,char *name,nl80211_iftype type,*flags,					struct vif_params *);
-}
-class wiphy{
+};
+class wiphy{;
   +name;
   '..
   +char priv[0];
   '--
   +register();
 struct wiphy *wiphy_new(const struct cfg80211_ops *ops, int sizeof_priv);
-}
-class ieee80211_sub_if_data{
+};
+class ieee80211_sub_if_data{;
 
-}
+};
 'class ieee80211_local << (S,#FF7700) >>{
-class ieee80211_local {
+class ieee80211_local {;
   'name;
-}
-cfg80211_ops <|.. mac80211_config_ops
-mac80211_config_ops <|.. ieee80211_local
+};
+cfg80211_ops <|.. mac80211_config_ops;
+mac80211_config_ops <|.. ieee80211_local;
 
 class net_device{
 
@@ -158,9 +158,9 @@ class ath_hw{
   ath_common;
   eeprom_ops *;
 }
-ath_bus_ops <|.. ath_common
-ath_ops <|.. ath_common
-ath_common --o ath_hw
+ath_bus_ops <|.. ath_common;
+ath_ops <|.. ath_common;
+ath_common --o ath_hw;
 
 class ath_softc{
   struct ieee80211_hw *hw;
@@ -226,13 +226,13 @@ interface ath9k_ops<<ath9k/main.c>>{
   ath9k_sw_scan_start
   ath9k_sw_scan_complete
 }
-ieee80211_ops<|..ath9k_ops:operator abstract or callback function pointer >
+ieee80211_ops<|..ath9k_ops:operator abstract or callback function pointer >;
 
-net_device <|.. ieee80211_hw
-ieee80211_local o-- ieee80211_hw
-ath_softc *-- ieee80211_hw
-wiphy <|-- ieee80211_local:Generalization >
-'Wiphy "1" *-- "Many" Class04:contains/Composition >
+net_device <|.. ieee80211_hw;
+ieee80211_local o-- ieee80211_hw;
+ath_softc *-- ieee80211_hw;
+wiphy <|-- ieee80211_local:Generalization >;
+'Wiphy "1" *-- "Many" Class04:contains/Composition >;
 
 @enduml
 rao_ath9k_class
