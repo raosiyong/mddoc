@@ -1,7 +1,7 @@
-![Alt text](https://g.gravizo.com/source/custom_mark13?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
+![Alt text](https://g.gravizo.com/source/svg/raosiyong_ath9k?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
 <details> 
 <summary></summary>
-custom_activity
+raosiyong_ath9k
 @startuml;
 %28*%29 --> if "Some Test" then;
   -->[true] "activity 1";
@@ -23,7 +23,7 @@ else;
   -> "activity 8";
 endif;
 @enduml
-custom_activity
+raosiyong_ath9k
 </details>
 ### Linux wireless driver:ath9k
 
