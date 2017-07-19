@@ -8,7 +8,7 @@ r_ath9k_class
 
 Class01  *-- "many" Class02 : contains;
 Class03 o-- Class04 : aggregation;
-Class05 --> "1" Class06;
+Class05 --> Class06;
 
 'skinparam classAttributeIconSize 0
 skinparam backgroundColor #808080;
