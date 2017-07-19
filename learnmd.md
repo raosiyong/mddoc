@@ -18,7 +18,7 @@ skinparam sequence {;
     'Participant underline
     ParticipantBorderColor lightGray;
     ParticipantBackgroundColor DodgerBlue;
-    ParticipantFontName Impact;
+    'ParticipantFontName Impact;
     ParticipantFontSize 17;
     ParticipantFontColor #A9DCDF;
     ActorBackgroundColor aqua;
