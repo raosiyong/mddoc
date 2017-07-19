@@ -4,7 +4,7 @@
 <summary></summary>
 ra_ath9k_class
 @startuml;
-body --> 'many' foot:contains;
+body --> foot:contains;
 foots o-- joe:aggregation;
 hand --> arm;
 @enduml
