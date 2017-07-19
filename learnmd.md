@@ -5,7 +5,6 @@
 r_ath9k_class
 
 @startuml
-
 'skinparam classAttributeIconSize 0
 skinparam backgroundColor #808080;
 'skinparam classAttributeFontColor grey
@@ -86,8 +85,6 @@ class ath_hw{
   ath_common;
   eeprom_ops *;
 }
-
-
 @enduml
 r_ath9k_class
 
