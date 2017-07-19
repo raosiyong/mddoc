@@ -1,7 +1,7 @@
-![Alt text](https://g.gravizo.com/source/svg/raosiyong_ath9k?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
+![Alt text](https://g.gravizo.com/source/svg/rao_ath9k?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
 <details> 
 <summary></summary>
-raosiyong_ath9k
+rao_ath9k
 @startuml
 
 skinparam roundcorner 20
@@ -67,7 +67,7 @@ ath9k_init->ath9k_init:ath_init_leds
 ath9k_init->ath9k_init:ath_start_rfkill_poll
 destroy ahb
 @enduml
-raosiyong_ath9k
+rao_ath9k
 </details>
 ### Linux wireless driver:ath9k
 
