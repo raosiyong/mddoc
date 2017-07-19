@@ -4,7 +4,7 @@
 <summary></summary>
 r_ath9k_class
 
-@startuml;
+@startuml
 
 Class01 "1" *-- "many" Class02 : contains;
 Class03 o-- Class04 : aggregation;
