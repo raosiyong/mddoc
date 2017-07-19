@@ -1,8 +1,8 @@
 
-![Alt text](https://g.gravizo.com/source/svg/r_ath9k_class?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
+![Alt text](https://g.gravizo.com/source/svg/ra_ath9k_class?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
 <details> 
 <summary></summary>
-r_ath9k_class
+ra_ath9k_class
 
 @startuml
 
@@ -95,7 +95,7 @@ cfg80211_ops <|.. mac80211_config_ops ;
 mac80211_config_ops <|.. ieee80211_local ;
 
 @enduml
-r_ath9k_class
+ra_ath9k_class
 </details>
 
 ![ath9k](https://g.gravizo.com/source/svg/rao_ath9k?https://raw.githubusercontent.com/raosiyong/mddoc/master/learnmd.md)
